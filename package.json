@@ -10,7 +10,8 @@
     "types": "npx nodemon src/types/types.ts",
     "classes": "npx nodemon src/classes/classes.ts",
     "tuples": "npx nodemon src/tuples/index.ts",
-    "async": "npx nodemon src/async/async.ts"
+    "async": "npx nodemon src/async/async.ts",
+    "generics": "npx nodemon src/generics/index.ts"
   },
   "dependencies": {
     "@types/node": "^20.12.5",
