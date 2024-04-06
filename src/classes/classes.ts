@@ -83,3 +83,36 @@ class CreateItem extends BaseClass implements Iitem, IitemId {
 
 const createItem = new CreateItem(123, "Book", 350);
 console.log('TAX Multiplas interfaces:', createItem.calculateTax());
+
+// Protected -> é o atributo que só pode ser acessado pelas seus subclasses ou classes filhas
+// Private -> o atributo não pode ser acessado por ninguém de fora, a não ser pela própria classe 
+
+class BaseCar{
+  private wheels;
+  #doors; // private js
+  protected model;
+  constructor(
+    wheels: number, 
+    doors: number,
+    model: string,
+  ){
+    this.wheels = wheels;
+    this.#doors = doors;
+    this.model = model;
+  }
+}
+
+class Car extends BaseCar{
+  constructor(readonly brand: string, readonly price: number){
+    super(4, 2, 'Fusca');
+    this.brand = brand;
+    this.price = price;
+  }
+
+  getModel(){
+    return this.model;
+  }
+}
+
+const car = new Car('Volkswagen', 8000);
+console.log('MODEL CAR:', car.getModel());

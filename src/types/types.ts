@@ -36,7 +36,7 @@ numbers[0] = 10;
 const persons: Person[] = [];
 persons.push(new Person('Barbada Liskov', 47));
 persons.push({
-  name: "Uncle Bob", age: 53, email: undefined, address: undefined, 
+  name: "Uncle Bob", age: 53, email: undefined, address: undefined,
   getName() {
     return this.name;
   },
@@ -80,7 +80,32 @@ type Enterprise = {
 type Company = City & Entity & Enterprise;
 
 const companies: Company[] = [];
-companies.push({ id: 123, city: 'São Paulo', name: 'Americanas', business: 'Varejo'});
+companies.push({ id: 123, city: 'São Paulo', name: 'Americanas', business: 'Varejo' });
 // companies.push({ id: 123, city: 'São Paulo', name: 'Agro Mil', business: 'Agronomo'}); //Error because dont exists business Agronomo
 
 
+// ANY AND UNKNOWN
+// Type unknown(desconhecido) só pode ser usado por outros objetos/classes/variaveis que são desconhecidas tbm ou any, ou seja, bem restrito
+// Type Any(Qualquer coisa) é utilizado para qualquer coisa, como se desativasse a tipagem e só utilizasse javascript
+
+class Server {
+  constructor(readonly port: any){} // definir como number pode dar erro pq unknown só recebe unknown ou any
+}
+
+function init(port: unknown){
+  new Server(port);
+}
+
+init(8080);
+
+// VOID AND NEVER
+// NEVER -> NUNCA TEM RETORNO COMO POR EXEMPLO UM LOOP INFINITO DE WHILE(TRUE)
+// VOID -> RETORNO VAZIO
+
+function initNever(): never{
+  initNever();
+}
+
+function initVoid(): void{
+  return undefined;
+}
