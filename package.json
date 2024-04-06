@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc && node dist/main",
-    "dev": "npx nodemon src/main.ts"
+    "dev": "npx nodemon src/main.ts",
+    "types": "npx nodemon src/types/types.ts",
+    "classes": "npx nodemon src/classes/classes.ts"
   },
   "dependencies": {
     "nodemon": "^3.1.0",
