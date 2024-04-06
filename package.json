@@ -5,9 +5,12 @@
   "author": "Edson Bruno <edsonbruno415@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "main": "tsc && node dist/main.js"
+    "build": "tsc && node dist/main",
+    "dev": "npx nodemon src/main.ts"
   },
   "dependencies": {
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.4"
   }
 }
