@@ -1,0 +1,13 @@
+{
+  "name": "learning_ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Edson Bruno <edsonbruno415@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "main": "tsc && node dist/main.js"
+  },
+  "dependencies": {
+    "typescript": "^5.4.4"
+  }
+}
