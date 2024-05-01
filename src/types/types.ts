@@ -64,7 +64,7 @@ myAge = true;
 
 // Union Types
 
-type Entity = {
+type EntityCity = {
   id: number,
 };
 
@@ -77,7 +77,7 @@ type Enterprise = {
   business: 'Tecnologia' | 'Varejo' | 'Mobiliario'
 }
 
-type Company = City & Entity & Enterprise;
+type Company = City & EntityCity & Enterprise;
 
 const companies: Company[] = [];
 companies.push({ id: 123, city: 'São Paulo', name: 'Americanas', business: 'Varejo' });
@@ -106,6 +106,8 @@ function initNever(): never{
   initNever();
 }
 
+// @ts-nocheck
+// @ts-ignore
 function initVoid(): void{
   return undefined;
 }

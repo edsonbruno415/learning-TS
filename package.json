@@ -11,11 +11,13 @@
     "classes": "npx nodemon src/classes/classes.ts",
     "tuples": "npx nodemon src/tuples/index.ts",
     "async": "npx nodemon src/async/async.ts",
-    "generics": "npx nodemon src/generics/index.ts"
+    "generics": "npx nodemon src/generics/index.ts",
+    "decorators": "npx ts-node src/decorators/orm/main.ts"
   },
   "dependencies": {
     "@types/node": "^20.12.5",
     "nodemon": "^3.1.0",
+    "pg-promise": "^11.6.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.4"
   }
