@@ -1,4 +1,4 @@
-import pgp, { Column } from "pg-promise";
+import pgp from "pg-promise";
 
 interface Connection {
   query(statement: string, params: any): Promise<any>;
