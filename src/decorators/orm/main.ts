@@ -24,7 +24,6 @@ class ORM {
 
   }
   async save(entity: Entity) {
-    console.log(entity.schema, entity.table, entity.columns);
     const columns = entity.columns.map(column => column.column).join(",");
     const params = entity.columns.map((column, index) => `$${index + 1}`).join(",");
     const values = entity.columns.map(column => entity[column.property]);
@@ -33,8 +32,8 @@ class ORM {
     this.connection.query(statement, [...values]);
   }
 
-  async list(){
-    return this.connection.query("select * from branas.book",[]);
+  async list(entity: Function){
+    return await this.connection.query(`select * from ${entity.prototype.schema}.${entity.prototype.table}`,[]);
   }
 }
 
@@ -76,13 +75,34 @@ class Book extends Entity {
   }
 }
 
+@entity({ schema: "branas", table: "car"})
+class Car extends Entity{
+  @column({ name: "br"})
+  brand: string;
+  @column({ name: "md"})
+  model: string;
+  constructor(brand: string, model: string){
+    super();
+    this.brand = brand;
+    this.model = model;
+  }
+}
+
 async function init() {
   const connection = new PostgresSQLConnection();
   const orm = new ORM(connection);
+
   const book = new Book("Clean Code", 'Robert Martin');
   await orm.save(book);
-  const books = await orm.list();
-  console.log('BOOKS', books);
+
+  const car = new Car("Fiat", "Pulse");
+  await orm.save(car);
+
+  const cars = await orm.list(Car);
+  const books = await orm.list(Book);
+  console.log('Books', books);
+  console.log('Cars', cars);
+
   await connection.close();
 }
 
